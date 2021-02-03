@@ -19,10 +19,10 @@ public class StockController {
     private static final Logger logger = LoggerFactory.getLogger(StockController.class);
 
     @GetMapping("/stock/{isbn}")
-    public Map<String, String> getStock(@PathVariable("isbn") String isbn) throws Exception {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("ISBN", isbn);
-        map.put("QUANTITY", String.valueOf(stockService.getStockByISBN(isbn)));
+    public Map<String, Object> getStock(@PathVariable("isbn") String isbn) throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("isbn", isbn);
+        map.put("quantity", stockService.getStockByISBN(isbn));
         return map;
     }
 
