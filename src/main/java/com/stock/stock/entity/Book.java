@@ -12,7 +12,7 @@ public class Book {
 
     private String name;
 
-    private int quantity;
+    private int quantity = 0;
 
     public Book() {
 
