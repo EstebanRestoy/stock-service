@@ -38,7 +38,7 @@ class StockApplicationTests {
 	@Test
 	void testGetStockByISBN() throws Exception {
 		this.mockMvc.perform(get("/stock/154871564789")).andDo(print()).andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON));
 	}
 
 	@Test
