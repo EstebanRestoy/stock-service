@@ -1,5 +1,6 @@
 package com.stock.stock.controller;
 
+import com.stock.stock.entity.Book;
 import com.stock.stock.service.IStockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -17,6 +19,11 @@ public class StockController {
     IStockService stockService;
 
     private static final Logger logger = LoggerFactory.getLogger(StockController.class);
+
+    @GetMapping("/books")
+    public List<Book> books() {
+        return stockService.getAllBooks();
+    }
 
     @GetMapping("/stock/{isbn}")
     public Map<String, Object> getStock(@PathVariable("isbn") String isbn) throws Exception {

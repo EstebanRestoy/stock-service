@@ -7,6 +7,8 @@ import com.stock.stock.repository.IStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StockService implements IStockService {
 
@@ -31,6 +33,11 @@ public class StockService implements IStockService {
     @Override
     public boolean isValidISBN(String isbn) {
         return isbn.matches("[0-9]{12,13}");
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return (List<Book>) IStockRepository.findAll();
     }
 
     @Override
