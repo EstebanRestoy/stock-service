@@ -18,11 +18,9 @@ public class StockController {
     @Autowired
     IStockService stockService;
 
-    private static final Logger logger = LoggerFactory.getLogger(StockController.class);
-
     @GetMapping("/books")
-    public String books() {
-        return "coucou";
+    public List<Book> books() {
+        return stockService.getAllBooks();
     }
 
     @GetMapping("/stock/{isbn}")

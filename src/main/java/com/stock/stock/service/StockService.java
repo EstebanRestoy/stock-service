@@ -13,7 +13,7 @@ import java.util.List;
 public class StockService implements IStockService {
 
     @Autowired
-    IStockRepository IStockRepository;
+    IStockRepository StockRepository;
 
     @Autowired
     ValidationService validationService;
@@ -23,8 +23,8 @@ public class StockService implements IStockService {
         if(!validationService.isValidISBN(isbn))
             throw new ISBNNotValidException("ISBN NOT VALID");
 
-        if(IStockRepository.findById(isbn).isPresent()){
-           return IStockRepository.findById(isbn).get().getQuantity();
+        if(StockRepository.findById(isbn).isPresent()){
+           return StockRepository.findById(isbn).get().getQuantity();
         }
 
         throw new ISBNNotFoundException("ISBN DOESNT EXIST !");
@@ -37,7 +37,7 @@ public class StockService implements IStockService {
 
     @Override
     public List<Book> getAllBooks() {
-        return (List<Book>) IStockRepository.findAll();
+        return (List<Book>) StockRepository.findAll();
     }
 
     @Override
@@ -48,8 +48,8 @@ public class StockService implements IStockService {
         if(!validationService.isValidStock(quantity))
             throw new ISBNNotValidException("QUANTITY NOT VALID");
 
-        if(IStockRepository.findById(isbn).isPresent()){
-            Book b = IStockRepository.findById(isbn).get();
+        if(StockRepository.findById(isbn).isPresent()){
+            Book b = StockRepository.findById(isbn).get();
             if(action.equals("add")){
                 b.setQuantity( b.getQuantity() + quantity );
             }else{
@@ -58,7 +58,7 @@ public class StockService implements IStockService {
                 }
                 b.setQuantity( b.getQuantity() - quantity );
             }
-            IStockRepository.save(b);
+            StockRepository.save(b);
             return;
         }
 
