@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS book;
+CREATE TABLE book(isbn VARCHAR(22) PRIMARY KEY, name VARCHAR(255) NOT NULL, quantity integer);
