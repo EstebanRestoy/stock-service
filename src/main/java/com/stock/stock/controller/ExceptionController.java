@@ -21,7 +21,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ISBNNotFoundException.class)
     public final ResponseEntity<ApiException> handleISBNNotFound(ISBNNotFoundException ex, WebRequest request) {
         ApiException e = new ApiException(new Date(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
     }
 
 
