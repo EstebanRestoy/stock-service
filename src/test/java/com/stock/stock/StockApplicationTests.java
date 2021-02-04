@@ -46,7 +46,7 @@ class StockApplicationTests {
 		this.mockMvc.perform(get("/stock/dadedaede")).andDo(print()).andExpect(status().isBadRequest())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
-		this.mockMvc.perform(get("/stock/154871564782")).andDo(print()).andExpect(status().isNotFound())
+		this.mockMvc.perform(get("/stock/154871564782")).andDo(print()).andExpect(status().isBadRequest())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON));
 	}
 
