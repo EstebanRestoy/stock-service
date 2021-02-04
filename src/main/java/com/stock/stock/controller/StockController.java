@@ -2,8 +2,6 @@ package com.stock.stock.controller;
 
 import com.stock.stock.entity.Book;
 import com.stock.stock.service.IStockService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
