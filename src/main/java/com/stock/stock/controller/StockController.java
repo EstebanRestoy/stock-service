@@ -21,8 +21,8 @@ public class StockController {
     private static final Logger logger = LoggerFactory.getLogger(StockController.class);
 
     @GetMapping("/books")
-    public List<Book> books() {
-        return stockService.getAllBooks();
+    public String books() {
+        return "coucou";
     }
 
     @GetMapping("/stock/{isbn}")
