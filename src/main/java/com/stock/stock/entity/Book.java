@@ -3,7 +3,7 @@ package com.stock.stock.entity;
 
 import javax.persistence.*;
 
-@Table(name = "book")
+@Table(name = "book",schema = "public")
 @Entity
 public class Book {
 
