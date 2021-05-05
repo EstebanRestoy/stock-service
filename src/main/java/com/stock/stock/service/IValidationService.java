@@ -4,7 +4,8 @@ public interface IValidationService {
 
      boolean isValidISBN(String isbn);
 
-     boolean isValidStock(int stock);
+     boolean isValidKey(String key);
 
+     boolean isValidStock(String stock);
 
 }

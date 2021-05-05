@@ -3,6 +3,7 @@ package com.stock.stock.service;
 import com.stock.stock.entity.Book;
 import com.stock.stock.exception.ISBNNotFoundException;
 import com.stock.stock.exception.ISBNNotValidException;
+import com.stock.stock.exception.WrongFomatQuantityException;
 import com.stock.stock.repository.IStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,22 +42,23 @@ public class StockService implements IStockService {
     }
 
     @Override
-    public void editStock(String isbn, int quantity, String action){
+    public void editStock(String isbn, String quantity, String action) {
         if(!validationService.isValidISBN(isbn))
             throw new ISBNNotValidException("ISBN NOT VALID");
 
         if(!validationService.isValidStock(quantity))
-            throw new ISBNNotValidException("QUANTITY NOT VALID");
+            throw new WrongFomatQuantityException("QUANTITY NOT VALID");
 
+        int quantityInt = Integer.parseInt(quantity);
         if(StockRepository.findById(isbn).isPresent()){
             Book b = StockRepository.findById(isbn).get();
             if(action.equals("add")){
-                b.setQuantity( b.getQuantity() + quantity );
+                b.setQuantity( b.getQuantity() + quantityInt );
             }else{
-                if(quantity > b.getQuantity()){
+                if(quantityInt > b.getQuantity()){
                     throw new ISBNNotValidException("QUANTITY NOT VALID STOCK AVAILABLE : " + b.getQuantity());
                 }
-                b.setQuantity( b.getQuantity() - quantity );
+                b.setQuantity( b.getQuantity() - quantityInt );
             }
             StockRepository.save(b);
             return;
