@@ -3,6 +3,7 @@ package com.stock.stock.service;
 import com.stock.stock.entity.Book;
 import com.stock.stock.exception.ISBNNotFoundException;
 import com.stock.stock.exception.ISBNNotValidException;
+import com.stock.stock.exception.NotEnoughQuantityException;
 import com.stock.stock.exception.WrongFomatQuantityException;
 import com.stock.stock.repository.IStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class StockService implements IStockService {
                 b.setQuantity( b.getQuantity() + quantityInt );
             }else{
                 if(quantityInt > b.getQuantity()){
-                    throw new ISBNNotValidException("QUANTITY NOT VALID STOCK AVAILABLE : " + b.getQuantity());
+                    throw new NotEnoughQuantityException("QUANTITY NOT VALID STOCK AVAILABLE : " + b.getQuantity());
                 }
                 b.setQuantity( b.getQuantity() - quantityInt );
             }
