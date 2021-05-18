@@ -21,11 +21,6 @@ public class StockController {
     @Autowired
     IValidationService validationService;
 
-    @GetMapping("/books")
-    public List<Book> books() {
-        return stockService.getAllBooks();
-    }
-
     @GetMapping("/stock/{isbn}")
     public Map<String, Object> getStock(@PathVariable("isbn") String isbn) throws Exception {
         HashMap<String, Object> map = new HashMap<>();
