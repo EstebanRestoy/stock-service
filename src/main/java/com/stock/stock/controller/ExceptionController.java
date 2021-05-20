@@ -46,5 +46,4 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
         ApiException e = new ApiException(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(e, HttpStatus.UNPROCESSABLE_ENTITY);
     }
-
 }

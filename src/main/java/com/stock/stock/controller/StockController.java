@@ -40,7 +40,6 @@ public class StockController {
 
     @PostMapping(value="/stock/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String removeStock(@RequestBody Map<String, String> values) throws Exception, InvalidAPIKeyException {
-
         if(!validationService.isValidKey(values.get("key")))
             throw new InvalidAPIKeyException(values.get("key") + " is not a valid key !");
 

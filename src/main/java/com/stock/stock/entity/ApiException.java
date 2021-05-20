@@ -24,5 +24,4 @@ public class ApiException {
     public String getDetails() {
         return details;
     }
-
 }
