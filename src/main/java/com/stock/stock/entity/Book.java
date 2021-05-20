@@ -3,14 +3,14 @@ package com.stock.stock.entity;
 
 import javax.persistence.*;
 
-@Table(name = "book",schema = "public")
+@Table(name = "book", schema = "public")
 @Entity
 public class Book {
 
     @Id
     private String isbn; //unique 22 max
 
-    private String name;
+    private String title;
 
     private String author;
 
@@ -20,9 +20,9 @@ public class Book {
 
     }
 
-    public Book(String isbn, String name, String author) {
+    public Book(String isbn, String title, String author) {
         this.isbn = isbn;
-        this.name = name;
+        this.title = title;
         this.author = author;
     }
 
@@ -34,12 +34,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getQuantity() {
